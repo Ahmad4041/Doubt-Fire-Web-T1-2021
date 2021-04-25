@@ -48,7 +48,6 @@ import {
   currentUserProvider,
   authProvider,
   taskServiceProvider,
-  TaskCommentServiceProvider,
   analyticsServiceProvider,
   taskProvider,
   projectServiceProvider,
@@ -97,16 +96,10 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatSortModule } from '@angular/material/sort';
 import { ActivityTypeListComponent } from './admin/states/activities/activity-type-list/activity-type-list.component';
 import { UnitStudentsEditorComponent } from './units/states/edit/directives/unit-students-editor/unit-students-editor.component';
-import { ActivityTypeService } from './api/models/activity-type/activity-type.service';
 import { InstitutionSettingsComponent } from './units/states/institution-settings/institution-settings.component';
 import { UnitTutorialsListComponent } from './units/states/edit/directives/unit-tutorials-list/unit-tutorials-list.component';
 import { UnitTutorialsManagerComponent } from './units/states/edit/directives/unit-tutorials-manager/unit-tutorials-manager.component';
-import { TutorialService } from './api/models/tutorial/tutorial.service';
-import { TutorialStreamService } from './api/models/tutorial-stream/tutorial-stream.service';
-import { CampusService } from './api/models/campus/campus.service';
 import { CommentBubbleActionComponent } from './tasks/task-comments-viewer/comment-bubble-action/comment-bubble-action.component';
-import { UserService } from './api/models/user/user.service';
-import { WebcalService } from './api/models/webcal/webcal.service';
 import { StudentTutorialSelectComponent } from './units/states/edit/directives/unit-students-editor/student-tutorial-select/student-tutorial-select.component';
 import { StudentCampusSelectComponent } from './units/states/edit/directives/unit-students-editor/student-campus-select/student-campus-select.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -116,6 +109,7 @@ import { EmojiModule } from '@ctrl/ngx-emoji-mart/ngx-emoji';
 import { EmojiService } from './common/services/emoji.service';
 import { TaskListItemComponent } from './projects/states/dashboard/directives/student-task-list/task-list-item/task-list-item.component';
 import { CreatePortfolioTaskListItemComponent } from './projects/states/dashboard/directives/student-task-list/create-portfolio-task-list-item/create-portfolio-task-list-item.component';
+import { TaskDescriptionCardComponent } from './projects/states/dashboard/directives/task-dashboard/directives/task-description-card/task-description-card.component';
 import { TaskCommentsViewerComponent } from './tasks/task-comments-viewer/task-comments-viewer.component';
 import { MarkedPipe } from './common/pipes/marked.pipe';
 import { UserIconComponent } from './common/user-icon/user-icon.component';
@@ -129,11 +123,21 @@ import { StaffTaskListComponent } from './units/states/tasks/inbox/directives/st
 import { FiltersPipe } from './common/filters/filters.pipe';
 import { TasksOfTaskDefinitionPipe } from './common/filters/tasks-of-task-definition.pipe';
 import { TasksInTutorialsPipe } from './common/filters/tasks-in-tutorials.pipe';
-import { TasksWithStudentNamePipe } from './common/filters/tasks-with-student-name.pipe';
+import { TasksForInboxSearchPipe } from './common/filters/tasks-for-inbox-search.pipe';
 import { StatusIconComponent } from './common/status-icon/status-icon.component';
 import { TaskPlagiarismCardComponent } from './projects/states/dashboard/directives/task-dashboard/directives/task-plagiarism-card/task-plagiarism-card.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import {
+  ActivityTypeService,
+  CampusService,
+  TaskCommentService,
+  TutorialService,
+  TutorialStreamService,
+  UserService,
+  WebcalService,
+} from './api/models/doubtfire-model';
 import { BugreportComponent } from './bugreport/bugreport.component';
+import { BugrepotingComponent } from './common/bugrepoting/bugrepoting.component';
 
 @NgModule({
   // Components we declare
@@ -161,6 +165,7 @@ import { BugreportComponent } from './bugreport/bugreport.component';
     StudentCampusSelectComponent,
     TaskListItemComponent,
     CreatePortfolioTaskListItemComponent,
+    TaskDescriptionCardComponent,
     StatusIconComponent,
     TaskCommentsViewerComponent,
     UserIconComponent,
@@ -175,10 +180,11 @@ import { BugreportComponent } from './bugreport/bugreport.component';
     FiltersPipe,
     TasksOfTaskDefinitionPipe,
     TasksInTutorialsPipe,
-    TasksWithStudentNamePipe,
+    TasksForInboxSearchPipe,
     StatusIconComponent,
     TaskPlagiarismCardComponent,
     BugreportComponent,
+    BugrepotingComponent,
   ],
   // Module Imports
   imports: [
@@ -255,7 +261,7 @@ import { BugreportComponent } from './bugreport/bugreport.component';
     CsvUploadModalProvider,
     CsvResultModalProvider,
     UnitStudentEnrolmentModalProvider,
-    TaskCommentServiceProvider,
+    TaskCommentService,
     TaskCommentProvider,
     AudioRecorderProvider,
     AudioRecorderServiceProvider,
@@ -277,7 +283,7 @@ import { BugreportComponent } from './bugreport/bugreport.component';
     DoubtfireConstants,
     TasksOfTaskDefinitionPipe,
     TasksInTutorialsPipe,
-    TasksWithStudentNamePipe,
+    TasksForInboxSearchPipe,
   ],
 })
 // There is no longer any requirement for an EntryComponents section
