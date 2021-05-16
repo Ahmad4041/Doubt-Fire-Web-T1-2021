@@ -3,7 +3,9 @@
     <div class="modal-header">
       <h3>Bug Reporting</h3>
     </div>
-    <div class="modal-body">
+
+//bug reporting Modal 
+   <div class="modal-body">
      
       <div class="form-group" ng-required="isNew">
         <label class="col-sm-3 control-label">Username</label>
@@ -14,6 +16,7 @@
             
       <div class="form-group" ng-required="isNew">
         <label class="col-sm-3 control-label">Email</label>
+        
         <div class="col-sm-7">
           <input type="email" class="form-control" ng-model="user.email">
         </div>
@@ -34,7 +37,7 @@
         <label class="col-sm-3 control-label">Select Issue type</label>
         <div class="col-sm-7">
           <select class="form-control"  value="Select" required>
-            <option >Functional defects</option>            
+            <option>Functional defects</option>            
             <option>Performance defects</option>
             <option>Compatibility defects</option>
           </select>
@@ -50,8 +53,7 @@
       </div>
      </div> 
 
-     
-      <hr>
+           <hr>
       
     <div class="modal-footer text-right">
       <input type="submit" class="btn btn-primary" value="Report" />
