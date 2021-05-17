@@ -1,0 +1,102 @@
+<div class="container">
+    <div class="panel panel-primary">
+      <div class="panel-heading clearfix">
+        <div class="pull-left">
+          <h4 class="panel-title">Bug Reporting log</h4>
+          
+        </div>
+        
+      </div> <!--
+      <div class="panel-body">
+       
+         <div style="overflow: auto;
+                     position: relative">
+         <section class="demo-panel-container" ng-controller="bugstate as panel" >
+           <ul class="nav nav-pills">
+  <li ng-class="{active:panel.isSelected(1)}"><a href="" ng-click="panel.selectTab(1)">Active</a></li>
+  <li ng-class="{active:panel.isSelected(2)}"><a href="" ng-click="panel.selectTab(2)">Completed</a></li>
+  <li ng-class="{active:panel.isSelected(3)}"><a href="" ng-click="panel.selectTab(3)">Archived</a></li>
+  
+           </ul>
+           <br />
+  
+  <div class="panel" ng-show="panel.isSelected(1)">
+    <ul class="list-group">
+      <li class="list-group-item" ng-repeat="ticket in openTickets">
+        <h4>Sunil Negi</h4>
+        <div ng-show='{{ticket.allowuser}}'><h5>negis@deakin.edu.au</h5></div>
+      <p>Student</p>
+         <p> Issue: Program Testing</p>
+      </li>
+    </ul>
+  </div>
+  <div class="panel" ng-show="panel.isSelected(2)">
+    <ul class="list-group">
+      <li class="list-group-item" ng-repeat="ticket in openTickets">
+        <h4>{{ticket.user.name}}</h4>
+        <div ng-show='{{ticket.allowuser}}'><h5>{{email}}</h5></div>
+      <p>{{ department }}</p>
+      </li>
+    </ul>
+  </div>
+  <div class="panel" ng-show="panel.isSelected(3)">
+    <ul class="list-group">
+      <li class="list-group-item" ng-repeat="ticket in openTickets">
+        <h4>{{ticket.user.name}}</h4>
+        <div ng-show='{{ticket.allowuser}}'><h5>{{email}}</h5></div>
+      <p>{{ department }}</p>
+      </li>
+    </ul>
+  </div>
+          </section>
+         </div>
+      </div>-->
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#1" style=" color: white !important; background-color: green !important; ">Active</a></li>
+        <li><a data-toggle="tab" href="#2">Completed</a></li>
+        <li><a data-toggle="tab" href="#3">Archived</a></li>
+        
+      </ul>
+    
+      <div class="tab-content">
+        <div id="1" class="tab-pane fade in active">
+          <h3>Active Issues</h3>
+          <ul class="list-group">
+            <li class="list-group-item">
+              <h4>Sunil Negi</h4>
+              <div ng-show='{{ticket.allowuser}}'><h5>negis@deakin.edu.au</h5></div>
+            <p> <b>Student</b></p>
+            <p> <b></b>Compatibility defects</b></p>
+               <p> <b>Issue:</b> Applicatio not running on ios</p>
+            </li>
+            <li class="list-group-item">
+              <h4>Sunil Negi</h4>
+              <div ng-show='{{ticket.allowuser}}'><h5>negis@deakin.edu.au</h5></div>
+            <p> <b>Student</b></p>
+            <p> <b>Performance defects</b></p>
+               <p> <b>Issue:</b> app close abrubtly</p>
+            </li>
+            <li class="list-group-item">
+              <h4>Sunil Negi</h4>
+              <div ng-show='{{ticket.allowuser}}'><h5>negis@deakin.edu.au</h5></div>
+            <p> <b>Student</b></p>
+            <p> <b>Functional defects</b></p>
+               <p> <b>Issue:</b> Button not working</p>
+            </li>
+            
+          </ul>
+        </div>
+        <div id="2" class="tab-pane fade">
+          <h3>Menu 1</h3>
+          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+        <div id="3" class="tab-pane fade">
+          <h3>Menu 2</h3>
+          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+        </div>
+        
+      </div>
+      
+    </div>
+  </div>
+  

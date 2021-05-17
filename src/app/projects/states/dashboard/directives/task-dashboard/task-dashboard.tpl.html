@@ -36,7 +36,7 @@
       <task-plagiarism-card [task]="task"></task-plagiarism-card>
       <task-status-card task="task"></task-status-card>
       <task-due-card task="task"></task-due-card>
-      <task-description-card task-def="task.definition" task="task" unit="task.unit()"></task-description-card>
+      <task-description-card [task-def]="task.definition" [task]="task" [unit]="task.unit()"></task-description-card>
     </div>
     <!--/task-description-column-->
     <div class="col-sm-12 col-xl-6">
@@ -47,7 +47,7 @@
     <!--/task-description-column-->
   </div>
   <!--/panel-body-->
-  <div class="has-pdf" ng-if="isCurrentView('task')">
+  <div class="panel-body has-pdf" ng-if="isCurrentView('task')">
     <pdf-viewer [pdf-url]="urls.taskSheetPdfUrl"></pdf-viewer>
   </div>
   <!--/panel-body-->

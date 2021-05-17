@@ -34,9 +34,20 @@
 }
 
 .dropdown-user user-icon {
-  width: 2em;
-  height: 2em;
   float: left;
   margin-right: 1ex;
   margin-top: -1px;
 }
+.button {
+  
+  background-color: #da532c;
+    border: none;
+    color: white;
+    padding:10px;
+    text-align: center;
+    text-decoration: none;
+    margin-top:2px;
+    font-size: 2em;
+    border-radius: 50%;
+    margin-right:10px;
+    }

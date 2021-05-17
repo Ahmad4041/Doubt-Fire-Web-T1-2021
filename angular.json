@@ -19,6 +19,7 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
+            "showCircularDependencies": false,
             "assets": ["src/assets", "src/manifest.webmanifest"],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
@@ -130,5 +131,8 @@
     "@schematics/angular:component": {
       "style": "scss"
     }
+  },
+  "cli": {
+    "analytics": "d9f70e12-eb87-48a0-a953-29ebd31202d7"
   }
 }

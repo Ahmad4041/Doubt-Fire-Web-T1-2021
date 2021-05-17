@@ -1,6 +1,6 @@
 ![Doubtfire Logo](http://puu.sh/lyClF/fde5bfbbe7.png)
 
-# Doubtfire Web
+# Doubtfire Web ![Node.js CI](https://github.com/OnTrack-UG-Squad/doubtfire-web/workflows/Node.js%20CI/badge.svg) ![CodeQL](https://github.com/OnTrack-UG-Squad/doubtfire-web/workflows/CodeQL/badge.svg)
 
 A modern, lightweight learning management system.
 
@@ -64,7 +64,6 @@ TODO:
 - [ ] ./src/app/tasks/modals/grade-task-modal/grade-task-modal.coffee
 - [ ] ./src/app/tasks/modals/plagiarism-report-modal/plagiarism-report-modal.coffee
 - [ ] ./src/app/tasks/task-definition-selector/task-definition-selector.coffee
-- [ ] ./src/app/tasks/task-feedback-assessor/task-feedback-assessor.coffee
 - [ ] ./src/app/tasks/task-plagiarism-report-viewer/task-plagiarism-report-viewer.coffee
 - [ ] ./src/app/tasks/task-plagiarism-file-viewer/task-plagiarism-file-viewer.coffee
 - [ ] ./src/app/tasks/project-tasks-list/project-tasks-list.coffee

@@ -2,14 +2,16 @@ import { Component, Input, Inject, ViewChild, Output, EventEmitter } from '@angu
 import { alertService } from 'src/app/ajs-upgraded-providers';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource, MatTable } from '@angular/material/table';
-import { Tutorial } from 'src/app/api/models/tutorial/tutorial';
+import {
+  Tutorial,
+  TutorialService,
+  Campus,
+  CampusService,
+  User,
+  TutorialStream,
+} from 'src/app/api/models/doubtfire-model';
 import { EntityFormComponent } from 'src/app/common/entity-form/entity-form.component';
-import { TutorialService } from 'src/app/api/models/tutorial/tutorial.service';
 import { FormControl, Validators } from '@angular/forms';
-import { Campus } from 'src/app/api/models/campus/campus';
-import { CampusService } from 'src/app/api/models/campus/campus.service';
-import { User } from 'src/app/api/models/user/user';
-import { TutorialStream } from 'src/app/api/models/tutorial-stream/tutorial-stream';
 
 @Component({
   selector: 'unit-tutorials-list',
@@ -48,7 +50,9 @@ export class UnitTutorialsListComponent extends EntityFormComponent<Tutorial> {
     this.campusService.query().subscribe((campuses) => {
       this.campuses.push(...campuses);
     });
-    this.tutorials = this.unit.tutorials.filter((tutorial) => tutorial.tutorial_stream === this.stream);
+    this.tutorials = this.unit.tutorials.filter(
+      (tutorial) => tutorial.tutorial_stream === this.stream || (!tutorial.tutorial_stream && !this.stream)
+    );
     this.dataSource = new MatTableDataSource(this.tutorials);
   }
 
@@ -115,6 +119,13 @@ export class UnitTutorialsListComponent extends EntityFormComponent<Tutorial> {
   // Handle the deletion of a stream
   deleteStream() {
     this.unit.deleteStream(this.stream);
+  }
+
+  /**
+   * Ensure that the unit is passed to the Tutorial entity when create it called.
+   */
+  protected otherOnCreate(): any {
+    return this.unit;
   }
 
   // Sorting function to sort data when sort

@@ -1,7 +1,7 @@
 import { OnInit, Directive } from '@angular/core';
 import { FormGroup, AbstractControl } from '@angular/forms';
 import { Entity } from 'src/app/api/models/entity';
-import { EntityService, HttpOptions } from 'src/app/api/models/entity.service';
+import { EntityService } from 'src/app/api/models/entity.service';
 import { Observable } from 'rxjs';
 import { Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -126,7 +126,8 @@ export class EntityFormComponent<T extends Entity> implements OnInit {
         response = service.update(this.selected);
       } else if (!this.selected) {
         // Nothing selected, which means we're creating something new
-        response = service.create(this.formDataToNewObject(service.serverKey));
+        const data = this.formDataToNewObject(service.serverKey); // sent as path id and body
+        response = service.create(data, data, this.otherOnCreate());
       } else {
         // Nothing has changed if the selected value, so we want to inform the user
         alertService.add('danger', `${service.entityName} was not changed`, 6000);
@@ -177,6 +178,18 @@ export class EntityFormComponent<T extends Entity> implements OnInit {
       }
     }
     return changes;
+  }
+
+  /**
+   * Returns the data that needs to be passed as the other parameter to the
+   * EntityService's create method when this control is used to create an Entity object.
+   *
+   * Override this in child classes to provide any other details needed to be passed
+   * to the entity constructor when an object is created. This is then passed along
+   * in the `create` call as the `other` value to the EntityService's create method.
+   */
+  protected otherOnCreate(): any {
+    return undefined;
   }
 
   /**
